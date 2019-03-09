@@ -1,0 +1,14 @@
+{
+  "name": "esy-help2man",
+  "version": "6.1.2000",
+  "description": "help2man packaged for esy",
+  "esy": {
+    "buildsInSource": true,
+    "build": [
+      "bash ./build.sh #{self.install} #{os}"
+    ],
+    "install": [
+      "bash ./install.bash"
+    ]
+  }
+}
