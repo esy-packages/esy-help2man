@@ -1,0 +1,64 @@
+# Makefile for help2man
+# $Id: Makefile.in,v 1.3 2000/04/15 14:17:40 bod Exp $
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+mandir = @mandir@
+infodir = @infodir@
+man1dir = $(mandir)/man1
+manext = .1
+
+DESTDIR =
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_INFO = @INSTALL_INFO@
+MAKEINFO = @MAKEINFO@
+MKINSTALLDIRS = $(srcdir)/mkinstalldirs
+PERL = @PERL@
+
+target = help2man
+
+all: $(target)
+install: $(target) $(target)$(manext) $(target).info
+	$(MKINSTALLDIRS) $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) $(target) $(DESTDIR)$(bindir)/$(target)
+	$(MKINSTALLDIRS) $(DESTDIR)$(man1dir)
+	$(INSTALL_DATA) $(target)$(manext) \
+	    $(DESTDIR)$(man1dir)/$(target)$(manext)
+
+	$(MKINSTALLDIRS) $(DESTDIR)$(infodir)
+	$(INSTALL_DATA) $(target).info $(DESTDIR)$(infodir)/$(target).info
+	if test -f $(DESTDIR)$(infodir)/dir; \
+	then \
+	    $(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) $(target).info; \
+	fi
+
+check: $(target)$(manext)
+clean mostlyclean:
+realclean:
+	-rm -f $(target) $(target)$(manext)
+
+distclean: realclean
+	-rm -f config.cache config.log config.status Makefile 
+
+$(target): $(srcdir)/$(target).PL
+	-rm -f $@
+	$(PERL) $(srcdir)/$(target).PL --stdout >$@
+	chmod 555 $@
+
+$(target)$(manext): $(target) $(srcdir)/$(target).aux
+	./$(target) --include=$(srcdir)/$(target).aux \
+	    --output=$(target)$(manext) ./$(target)
+
+$(target).info: $(srcdir)/$(target).texi
+	$(MAKEINFO) $? -o $@
+
+Makefile: $(srcdir)/Makefile.in
+	./config.status

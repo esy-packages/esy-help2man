@@ -1,0 +1,28 @@
+Version 1.020		December 30, 1999
+
+ * Remove directory from command name(s) in synopsis.
+
+Version 1.019		November 3, 1999
+
+ * Sadly, 2+ spaces *are* required to unambiguously separate options
+   from descriptions.
+
+Version 1.018		November 1, 1999
+
+ * Recognise additional synopsis lines without requiring `or:' prefix.
+ * Adjust option tagged paragraph matching so that the first option
+   argument does not require an `='.
+
+Version 1.017		October 27, 1999
+
+ * Allow --include to be used multiple times.
+ * Include files may now contain `/pattern/' which will append the text
+   following to any paragraph which matches the pattern.
+
+Version 1.016		October 25, 1999
+
+ * Handle indenting/continuation of things which look like options
+   separately.  This removes the requirement for 2+ spaces between
+   option and description, allows the description to occur on the line
+   below the option and relaxes the indent matching rules for continued
+   lines.
