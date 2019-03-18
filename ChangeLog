@@ -1,0 +1,147 @@
+Sun Apr 16 00:18:41 2000  Brendan O'Dea  <bod@diablo>
+
+	* Makefile.in: Add mkinstalldirs (as reqested by Dave Morrison,
+	  Patrick Tullmann and Mo DeJong)
+
+	* help2man.PL: Version bump
+
+Thu Dec 30 01:29:12 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.texi: Correct typo
+
+Thu Nov 11 03:16:25 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Remove directories from synopsis
+
+Wed Nov  3 17:39:50 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Revise tagged paragraph matching *again*
+
+Mon Nov  1 21:50:36 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Allow multiple synopsis entries (w/- `or:'). Single
+	  options may have argument w/- `='.
+
+	* help2man.texi: Add /pattern/
+	* configure.in: Add MAKEINFO/INSTALL_INFO
+	* Makefile.in: Install help2man.info
+
+Wed Oct 27 16:02:00 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Allow --include to be specified multiple times. Add
+	  /pattern/.
+
+	* help2man.aux: Document /pattern/ syntax
+
+Mon Oct 25 22:36:16 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Fix odd /^x|^y/ pre-5.005 perl bug. Split tagged
+	  paragraph logic into option/other. Protect leading periods in
+	  continuation lines.
+
+	* THANKS to Roland Huebner for extensive bug report.
+	* Add NEWS file
+
+Tue Oct 12 16:25:23 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Protect leading dots (1.14: not released)
+
+	* README.sh, help2man.aux: Add ftp.gnu.org URL
+	* help2man.PL: Allow fixed-pitch examples where prefixed by $,
+	  % or > (for Akim)
+
+Thu Sep  2 19:43:02 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Fix typo in --help (Jim Meyering)
+	  Escape backslashes (Andreas Schwab/Peter Moulder)
+
+	* help2man.texi: (add) Texinfo docs for help2man
+
+Thu Jun 24 12:17:50 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Add --section option (from Okuji Yoshinori). Fixes
+	  to option handling and inter-paragraph breaks.
+
+Thu Jun 17 19:45:08 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Defer option formatting until after paragraph
+	  continuation handling
+
+	* Makefile.in, configure.in: (add) autoconf support
+        * configure, makefile.dist: (remove) autoconf support
+	* README.in: Rename to README.sh (so as not to be confused with
+	  autoconf files)
+
+Wed Mar 24 21:47:18 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Improved tagged paragraph/continuation handling
+
+Thu Feb 25 15:58:30 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* README.in, help2man.aux: Add URL for distribution
+	* help2man.PL: Increment revision (changes to help2man.aux)
+
+Thu Jan 21 14:46:48 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Update copyright
+	* makefile.dist: Add help2man.1 to `all' target
+
+Mon Jan 11 10:42:04 1999  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Handle version output with `Free' as well as `GNU'.
+	  Missing backslash in initial comment (from Andreas Schwab)
+
+Thu Dec 10 12:50:10 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Experimental NLS version on main trunk (1.6-1.8)
+	  pruned, rejoined branch 1.5.1.4 as 1.6
+
+	  Cleaned up version format and removed François' name from
+	  the code (at his suggestion).
+
+	* README.in: (add) Description for help2man
+	* configure: (add) Dodgy configure script for help2man
+	* help2man.aux: (add) Include file for help2man man page
+	* makefile.dist: (add) Dodgy makefile for help2man
+
+Wed Nov 25 11:31:09 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Join hyphenated lines in --version output
+
+Tue Oct 20 20:44:46 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Fix strftime locale (from Akim Demaille), add
+	  --no-info option
+
+Tue Oct  6 10:05:20 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Remove --manhelp/oneliner mechanism
+
+Sat Aug 29 04:50:02 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Add --include/--opt-include options and Clark
+	  Morgan's --manhelp/oneliner parsing. Merged changes from Karl
+	  Berry.
+
+Thu Feb 26 10:38:34 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Fix synopsis and revert `use version' to `require
+	  version' as perl5.003 doesn't grok the former
+
+Mon Feb 23 11:54:13 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Add --output
+
+Fri Feb 20 15:14:22 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Made self-extracting .PL for portability; Some
+	  enhancements to work with a2ps for Akim
+
+Thu Feb 19 10:16:58 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Fix DESCRIPTION mis-spell (from Akim Demaille)
+
+Thu Jan 22 16:53:32 1998  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: (add) Generate man page from a program's --version
+	  and --help output

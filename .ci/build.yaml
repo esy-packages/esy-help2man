@@ -1,0 +1,19 @@
+parameters:
+  host: ''
+  pool: ''
+  sign: false
+
+jobs:
+- job: ${{ parameters.host }}
+  pool: ${{ parameters.pool }}
+  steps:
+  - ${{ if eq(parameters.sign, 'true') }}:
+    - script: 'npm install -g esy@latest --unsafe-perm'
+      displayName: 'Installing deps'
+  - ${{ if eq(parameters.sign, 'false') }}:
+    - script: 'sudo npm install -g esy@latest --unsafe-perm'
+      displayName: 'Installing deps'
+  - script: esy install
+    displayName: 'Installing deps'
+  - script: esy x perl "#{self.bin / 'help2man'}" --version
+    displayName: 'Building and Dry run'

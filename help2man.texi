@@ -1,0 +1,252 @@
+\input texinfo @c -*-texinfo-*-
+@c %**start of header
+@setfilename help2man.info
+@settitle @code{help2man} Reference Manual
+@setchapternewpage odd
+@finalout
+@c %**end of header
+@c $Id: help2man.texi,v 1.3 1999/12/29 14:29:12 bod Exp $
+
+@dircategory GNU admin
+@direntry
+* help2man: (help2man).      Automatic manual page generation.
+@end direntry
+
+@ifinfo
+This file documents the @code{help2man} command which produces simple
+manual pages from the @samp{--help} and @samp{--version} output of other
+commands.
+
+Copyright (C) 1999 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+@ignore
+Permission is granted to process this file through TeX and print the
+results, provided the printed document carries copying permission
+notice identical to this one except for the removal of this paragraph
+(this paragraph not being relevant to the printed manual).
+
+@end ignore
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end ifinfo
+
+@titlepage
+@title help2man
+@subtitle A utility for generating simple manual pages
+@author Brendan O'Dea @email{bod@@compusol.com.au}
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 1999 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end titlepage
+
+@ifinfo
+@node Top
+@top @code{help2man}
+
+@code{help2man} produces simple manual pages from the @samp{--help}
+and @samp{--version} output of other commands.
+
+@menu
+* Overview::                    Overview of @code{help2man}.
+* Invoking help2man::           How to run @code{help2man}.
+* Including text::              Including additional text in the output.
+* Makefile usage::              Using @code{help2man} with @code{make}.
+* Obtaining help2man::          How to obtain @code{help2man}.
+@end menu
+@end ifinfo
+
+@node Overview
+@chapter Overview
+
+@code{help2man} is a tool for automatically generating simple manual
+pages from program output.
+
+Although manual pages are optional for GNU programs other projects,
+such as Debian require them (@pxref{Man Pages, , , standards, The GNU
+Coding Standards})
+
+This program is intended to provide an easy way for software authors
+to include a manual page in their distribution without having to
+maintain that document.
+
+Given a program which produces reasonably standard @samp{--help} and
+@samp{--version} outputs, @code{help2man} can re-arrange that output
+into something which resembles a manual page.
+
+@node Invoking help2man
+@chapter Invoking help2man
+
+The format for running the @code{help2man} program is:
+
+@example
+@code{help2man} [@var{option}]@dots{} @var{executable}
+@end example
+
+@code{help2man} supports the following options:
+
+@table @samp
+@item --name @var{string}
+@itemx -n @var{string}
+Use @var{string} as the description for the @samp{NAME} paragraph of
+the manual page.
+
+By default (for want of anything better) this paragraph contains
+@samp{manual page for @var{program} @var{version}}.
+
+This option overrides an include file @samp{[name]} section
+(@xref{Including text}).
+
+@item --section @var{section}
+@itemx -s @var{section}
+Use @var{section} as the section for the man page.  The default
+section is 1.
+
+@item --include @var{file}
+@itemx -i @var{file}
+Include material from @var{file} (@xref{Including text}).
+
+@item --opt-include @var{file}
+@itemx -I @var{file}
+A variant of @samp{--include} for use in Makefile pattern rules which
+does not require @var{file} to exist.
+
+@item --output @var{file}
+@itemx -o @var{file}
+Send output to @var{file} rather than @code{stdout}.
+
+@item --no-info
+@itemx -N
+Suppress inclusion of a @samp{SEE ALSO} paragraph directing the reader
+to the Texinfo documentation.
+
+@item --help
+@itemx --version
+Show help or version information.
+@end table
+
+@node Including text
+@chapter Including Text
+
+Additional static text may be included in the generated manual page by
+using the @samp{--include} and @samp{--opt-include} options
+(@xref{Invoking help2man}).
+
+The format for files included with these option is simple:
+
+@example
+[section]
+text
+
+/pattern/
+text
+@end example
+
+Blocks of verbatim *roff text are inserted into the output either at
+the start of the given @samp{[section]} (case insensitive), or after a
+paragraph matching @samp{/pattern/}.
+
+Patterns use the Perl regular expression syntax and may be followed by
+the @samp{i}, @samp{s} or @samp{m} modifiers (@pxref{perlre, ,
+perlre(1), *manpages*, The @code{perlre(1)} manual page})
+
+Anything before the first section or pattern is silently ignored and
+may be used for comments, RCS keywords and the like.
+
+The section output order is:
+
+@example
+NAME
+SYNOPSIS
+DESCRIPTION
+OPTIONS
+EXAMPLES
+@emph{other}
+AUTHOR
+REPORTING BUGS
+COPYRIGHT
+SEE ALSO
+@end example
+
+Any @samp{[name]} or @samp{[synopsis]} sections appearing in the
+include file will replace what would have automatically been produced
+(although you can still override the former with @samp{--name} if
+required).
+
+Other sections are prepended to the automatically produced output for
+the standard sections given above, or included at @emph{other} (above)
+in the order they were encountered in the include file.
+
+@node Makefile usage
+@chapter Makefile Usage
+
+A suggested use of @code{help2man} in Makefiles is to have the manual
+page depend not on the binary, but on the source file(s) in which the
+@samp{--help} and @samp{--version} output are defined.
+
+This usage allows a manual page to be generated by the maintainer and
+included in the distribution without requiring the end-user to have
+@code{help2man} installed.
+
+An example rule for the program @code{prog} could be:
+
+@example
+@group
+prog.1: $(srcdir)/main.c
+        -$(HELP2MAN) --output=$@@ --name='an example program' ./prog
+@end group
+@end example
+
+The value of @code{HELP2MAN} may be set in @code{configure.in} using
+either of:
+
+@example
+AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
+@end example
+
+for @code{automake}, or something like:
+
+@example
+AC_PATH_PROG(HELP2MAN, help2man, false // No help2man //)
+@end example
+
+for @code{autoconf} alone.
+
+@node Obtaining help2man
+@chapter Obtaining help2man
+
+The latest version of this distribution is available on-line from
+either:
+
+@example
+@url{ftp://ftp.gnu.org/gnu/help2man/}
+@url{http://www.ozemail.com.au/~bod/help2man.tar.gz}
+@end example
+
+@contents
+@bye

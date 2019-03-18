@@ -1,0 +1,15 @@
+{
+  "name": "esy-help2man",
+  "version": "1.021.000",
+  "description": "Autoconf packaged for esy",
+  "esy": {
+    "buildsInSource": true,
+    "build": [
+      ["chmod", "755", "./configure", "./mkinstalldirs"],
+      ["ln", "-s", "/usr/bin/true", "#{ self.bin / 'makeinfo' }"],
+      ["bash", "-c", "#{os == 'windows' ? './configure --prefix=$cur__install --host x86_64-w64-mingw32' : './configure --prefix=$cur__install'}"],
+      ["make"],
+      ["make", "install"]
+    ]
+  }
+}

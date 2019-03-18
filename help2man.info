@@ -1,0 +1,215 @@
+This is Info file help2man.info, produced by Makeinfo version 1.67 from
+the input file help2man.texi.
+
+INFO-DIR-SECTION GNU admin
+START-INFO-DIR-ENTRY
+* help2man: (help2man).      Automatic manual page generation.
+END-INFO-DIR-ENTRY
+
+   This file documents the `help2man' command which produces simple
+manual pages from the `--help' and `--version' output of other commands.
+
+   Copyright (C) 1999 Free Software Foundation, Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Foundation.
+
+
+File: help2man.info,  Node: Top,  Next: Overview,  Up: (dir)
+
+`help2man'
+**********
+
+   `help2man' produces simple manual pages from the `--help' and
+`--version' output of other commands.
+
+* Menu:
+
+* Overview::                    Overview of `help2man'.
+* Invoking help2man::           How to run `help2man'.
+* Including text::              Including additional text in the output.
+* Makefile usage::              Using `help2man' with `make'.
+* Obtaining help2man::          How to obtain `help2man'.
+
+
+File: help2man.info,  Node: Overview,  Next: Invoking help2man,  Prev: Top,  Up: Top
+
+Overview
+********
+
+   `help2man' is a tool for automatically generating simple manual
+pages from program output.
+
+   Although manual pages are optional for GNU programs other projects,
+such as Debian require them (*note Man Pages: (standards)Man Pages.)
+
+   This program is intended to provide an easy way for software authors
+to include a manual page in their distribution without having to
+maintain that document.
+
+   Given a program which produces reasonably standard `--help' and
+`--version' outputs, `help2man' can re-arrange that output into
+something which resembles a manual page.
+
+
+File: help2man.info,  Node: Invoking help2man,  Next: Including text,  Prev: Overview,  Up: Top
+
+Invoking help2man
+*****************
+
+   The format for running the `help2man' program is:
+
+     `help2man' [OPTION]... EXECUTABLE
+
+   `help2man' supports the following options:
+
+`--name STRING'
+`-n STRING'
+     Use STRING as the description for the `NAME' paragraph of the
+     manual page.
+
+     By default (for want of anything better) this paragraph contains
+     `manual page for PROGRAM VERSION'.
+
+     This option overrides an include file `[name]' section (*Note
+     Including text::).
+
+`--section SECTION'
+`-s SECTION'
+     Use SECTION as the section for the man page.  The default section
+     is 1.
+
+`--include FILE'
+`-i FILE'
+     Include material from FILE (*Note Including text::).
+
+`--opt-include FILE'
+`-I FILE'
+     A variant of `--include' for use in Makefile pattern rules which
+     does not require FILE to exist.
+
+`--output FILE'
+`-o FILE'
+     Send output to FILE rather than `stdout'.
+
+`--no-info'
+`-N'
+     Suppress inclusion of a `SEE ALSO' paragraph directing the reader
+     to the Texinfo documentation.
+
+`--help'
+`--version'
+     Show help or version information.
+
+
+File: help2man.info,  Node: Including text,  Next: Makefile usage,  Prev: Invoking help2man,  Up: Top
+
+Including Text
+**************
+
+   Additional static text may be included in the generated manual page
+by using the `--include' and `--opt-include' options (*Note Invoking
+help2man::).
+
+   The format for files included with these option is simple:
+
+     [section]
+     text
+     
+     /pattern/
+     text
+
+   Blocks of verbatim *roff text are inserted into the output either at
+the start of the given `[section]' (case insensitive), or after a
+paragraph matching `/pattern/'.
+
+   Patterns use the Perl regular expression syntax and may be followed
+by the `i', `s' or `m' modifiers (*note perlre(1): (*manpages*)perlre.)
+
+   Anything before the first section or pattern is silently ignored and
+may be used for comments, RCS keywords and the like.
+
+   The section output order is:
+
+     NAME
+     SYNOPSIS
+     DESCRIPTION
+     OPTIONS
+     EXAMPLES
+     *other*
+     AUTHOR
+     REPORTING BUGS
+     COPYRIGHT
+     SEE ALSO
+
+   Any `[name]' or `[synopsis]' sections appearing in the include file
+will replace what would have automatically been produced (although you
+can still override the former with `--name' if required).
+
+   Other sections are prepended to the automatically produced output for
+the standard sections given above, or included at *other* (above) in
+the order they were encountered in the include file.
+
+
+File: help2man.info,  Node: Makefile usage,  Next: Obtaining help2man,  Prev: Including text,  Up: Top
+
+Makefile Usage
+**************
+
+   A suggested use of `help2man' in Makefiles is to have the manual
+page depend not on the binary, but on the source file(s) in which the
+`--help' and `--version' output are defined.
+
+   This usage allows a manual page to be generated by the maintainer and
+included in the distribution without requiring the end-user to have
+`help2man' installed.
+
+   An example rule for the program `prog' could be:
+
+     prog.1: $(srcdir)/main.c
+             -$(HELP2MAN) --output=$@ --name='an example program' ./prog
+
+   The value of `HELP2MAN' may be set in `configure.in' using either of:
+
+     AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
+
+   for `automake', or something like:
+
+     AC_PATH_PROG(HELP2MAN, help2man, false // No help2man //)
+
+   for `autoconf' alone.
+
+
+File: help2man.info,  Node: Obtaining help2man,  Prev: Makefile usage,  Up: Top
+
+Obtaining help2man
+******************
+
+   The latest version of this distribution is available on-line from
+either:
+
+     `ftp://ftp.gnu.org/gnu/help2man/'
+     `http://www.ozemail.com.au/~bod/help2man.tar.gz'
+
+
+
+Tag Table:
+Node: Top1090
+Node: Overview1595
+Node: Invoking help2man2273
+Node: Including text3467
+Node: Makefile usage4891
+Node: Obtaining help2man5792
+
+End Tag Table
