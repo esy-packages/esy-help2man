@@ -1,5 +1,5 @@
-This is Info file help2man.info, produced by Makeinfo version 1.67 from
-the input file help2man.texi.
+This is help2man.info, produced by makeinfo version 4.1 from
+help2man.texi.
 
 INFO-DIR-SECTION GNU admin
 START-INFO-DIR-ENTRY
@@ -9,7 +9,7 @@ END-INFO-DIR-ENTRY
    This file documents the GNU `help2man' command which produces simple
 manual pages from the `--help' and `--version' output of other commands.
 
-   Copyright (C) 1999, 2000, 2001 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -39,6 +39,7 @@ File: help2man.info,  Node: Top,  Next: Overview,  Up: (dir)
 * Overview::                    Overview of `help2man'.
 * Invoking help2man::           How to run `help2man'.
 * Including text::              Including additional text in the output.
+* --help recommendations::	Recommended formatting for --help output.
 * Makefile usage::              Using `help2man' with `make'.
 * Reports::                     Reporting bugs or suggestions.
 * Availability::                Obtaining `help2man'.
@@ -66,8 +67,8 @@ something which resembles a manual page.
 
 File: help2man.info,  Node: Invoking help2man,  Next: Including text,  Prev: Overview,  Up: Top
 
-How to Run `help2man'.
-**********************
+How to Run `help2man'
+*********************
 
    The format for running the `help2man' program is:
 
@@ -84,7 +85,7 @@ How to Run `help2man'.
      `manual page for PROGRAM VERSION'.
 
      This option overrides an include file `[name]' section (*note
-     Including text::.).
+     Including text::).
 
 `-s SECTION'
 `--section SECTION'
@@ -106,7 +107,7 @@ How to Run `help2man'.
 
 `-i FILE'
 `--include=FILE'
-     Include material from FILE (*note Including text::.).
+     Include material from FILE (*note Including text::).
 
 `-I FILE'
 `--opt-include=FILE'
@@ -138,14 +139,89 @@ options to the executable although alternatives may be specified using:
      version option string
 
 
-File: help2man.info,  Node: Including text,  Next: Makefile usage,  Prev: Invoking help2man,  Up: Top
+File: help2man.info,  Node: --help recommendations,  Next: Makefile usage,  Prev: Including text,  Up: Top
+
+`--help' Recommendations
+************************
+
+   Here are some recommendations for what to include in your `--help'
+output.  Including these gives `help2man' the best chance at generating
+a respectable man page, as well as benefitting users directly.
+
+   *Note Command-Line Interfaces: (GNU Coding Standards)Command-Line
+Interfaces, and *Note Man Pages: (GNU Coding Standards)Man Pages, for
+the official GNU standards relating to `--help' and man pages.
+
+   * A synopsis of how to invoke the program.  If different usages of
+     the program have different invocations, then list them all.  For
+     example (edited for brevity):
+
+          Usage: cp [OPTION]... SOURCE DEST
+            or:  cp [OPTION]... SOURCE... DIRECTORY
+          ...
+
+     Use `argv[0]' for the program name in these synopses, just as it
+     is, with no directory stripping.  This is in contrast to the
+     canonical (constant) name of the program which is used in
+     `--version'.
+
+   * A very brief explanation of what the program does, including
+     default and/or typical behavior.  For example, here is `cp''s:
+
+          Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+   * A list of options, indented to column 2.  If the program supports
+     one-character options, put those first, then the equivalent long
+     option (if any).  If the option takes an argument, include that
+     too, giving it a meaningful name.  Align the descriptions in a
+     convenient column, if desired.  Note that to be correctly
+     recognised by `help2man' the description must be separated from
+     the options by at least two spaces and descriptions continued on
+     subsequent lines must start at the same column.
+
+     Here again is an (edited) excerpt from `cp', showing a short
+     option with an equivalent long option, a long option only, and a
+     short option only:
+
+            -a, --archive                same as -dpR
+                --backup[=CONTROL]       make a backup of each ...
+            -b                           like --backup but ...
+
+     For programs that take many options, it may be desirable to split
+     the option list into sections such as `Global', `Output control',
+     or whatever makes sense in the particular case.  It is usually
+     best to alphabetize (by short option name first, then long) within
+     each section, or the entire list if there are no sections.
+
+   * Any useful additional information about program behavior, such as
+     influential environment variables, further explanation of options,
+     etc.  For example, `cp' discusses `VERSION_CONTROL' and sparse
+     files.
+
+   * A few examples of typical usage, at your discretion.  One good
+     example is usually worth a thousand words of description, so this
+     is highly recommended.
+
+   * In closing, a line stating how to email bug reports.  Typically,
+     MAILING-ADDRESS will be `bug-PROGRAM@gnu.org'; please use this
+     form for GNU programs whenever possible.  It's also good to
+     mention the home page of the program, other mailing lists, etc.
+
+
+   The `argp' and `popt' programming interfaces let you specify option
+descriptions for `--help' in the same structure as the rest of the
+option definition; you may wish to consider using these routines for
+option parsing instead of `getopt'.
+
+
+File: help2man.info,  Node: Including text,  Next: --help recommendations,  Prev: Invoking help2man,  Up: Top
 
 Including Additional Text in the Output
 ***************************************
 
    Additional static text may be included in the generated manual page
 by using the `--include' and `--opt-include' options (*note Invoking
-help2man::.).
+help2man::).
 
    The format for files included with these option is simple:
 
@@ -173,7 +249,7 @@ used for comments, RCS keywords and the like.
      DESCRIPTION
      OPTIONS
      EXAMPLES
-     *other*
+     _other_
      AUTHOR
      REPORTING BUGS
      COPYRIGHT
@@ -184,11 +260,11 @@ will replace what would have automatically been produced (although you
 can still override the former with `--name' if required).
 
    Other sections are prepended to the automatically produced output for
-the standard sections given above, or included at *other* (above) in
+the standard sections given above, or included at _other_ (above) in
 the order they were encountered in the include file.
 
 
-File: help2man.info,  Node: Makefile usage,  Next: Reports,  Prev: Including text,  Up: Top
+File: help2man.info,  Node: Makefile usage,  Next: Reports,  Prev: --help recommendations,  Up: Top
 
 Using `help2man' With `make'
 ****************************
@@ -233,17 +309,18 @@ Obtaining `help2man'
 
    The latest version of this distribution is available on-line from:
 
-     `ftp://ftp.gnu.org/gnu/help2man/'
+     <ftp://ftp.gnu.org/gnu/help2man/>
 
 
 
 Tag Table:
-Node: Top1106
-Node: Overview1670
-Node: Invoking help2man2376
-Node: Including text4374
-Node: Makefile usage5908
-Node: Reports6826
-Node: Availability7101
+Node: Top1086
+Node: Overview1719
+Node: Invoking help2man2425
+Node: --help recommendations4419
+Node: Including text7834
+Node: Makefile usage9375
+Node: Reports10301
+Node: Availability10576
 
 End Tag Table
