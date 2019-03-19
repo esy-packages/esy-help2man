@@ -1,12 +1,15 @@
                         README for GNU help2man
-                              version 1.27
-                             March 19, 2002
+
+                             version 1.28
+
+                             June  4, 2002
+
 
 help2man is a script to create simple man pages from the --help and
 --version output of programs.
 
   http://www.gnu.org/software/help2man/
-  ftp://ftp.gnu.org/gnu/help2man/help2man-1.27.tar.gz
+  ftp://ftp.gnu.org/gnu/help2man/help2man-1.28.tar.gz
 
 Since most GNU documentation is now in info format, this provides a
 way to generate a placeholder man page pointing to that resource while

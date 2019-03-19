@@ -1,3 +1,10 @@
+Tue Jun  4 00:53:18 2002  Brendan O'Dea  <bod@odea.dropbear.id.au>
+
+	* help2man.PL: Expand copyright years (Paul Eggert).  Provide
+	  --info-page option (Bonzini).
+
+	* README.sh: hrm, different awk...
+
 Tue Mar 19 23:52:37 2002  Brendan O'Dea  <bod@debian.org>
 
 	* help2man.PL: Allow short and long options to be separated by
