@@ -1,3 +1,7 @@
+Version 1.24		December 22, 2000
+
+ * Allow options to be specified in the initial block of include files.
+
 Version 1.23		October 31, 2000
 
  * Escape leading apostrophes.

@@ -83,8 +83,8 @@ How to Run `help2man'.
      By default (for want of anything better) this paragraph contains
      `manual page for PROGRAM VERSION'.
 
-     This option overrides an include file `[name]' section (*Note
-     Including text::).
+     This option overrides an include file `[name]' section (*note
+     Including text::.).
 
 `--section SECTION'
 `-s SECTION'
@@ -93,7 +93,7 @@ How to Run `help2man'.
 
 `--include FILE'
 `-i FILE'
-     Include material from FILE (*Note Including text::).
+     Include material from FILE (*note Including text::.).
 
 `--opt-include FILE'
 `-I FILE'
@@ -120,8 +120,8 @@ Including Additional Text in the Output
 ***************************************
 
    Additional static text may be included in the generated manual page
-by using the `--include' and `--opt-include' options (*Note Invoking
-help2man::).
+by using the `--include' and `--opt-include' options (*note Invoking
+help2man::.).
 
    The format for files included with these option is simple:
 
@@ -138,8 +138,9 @@ paragraph matching `/pattern/'.
    Patterns use the Perl regular expression syntax and may be followed
 by the `i', `s' or `m' modifiers (*note perlre(1): (*manpages*)perlre.)
 
-   Anything before the first section or pattern is silently ignored and
-may be used for comments, RCS keywords and the like.
+   Lines before the first section or pattern which begin with `-' are
+processed as options.  Anything else is silently ignored and may be
+used for comments, RCS keywords and the like.
 
    The section output order is:
 
@@ -216,9 +217,9 @@ Tag Table:
 Node: Top1100
 Node: Overview1664
 Node: Invoking help2man2370
-Node: Including text3574
-Node: Makefile usage5048
-Node: Reports5966
-Node: Availability6241
+Node: Including text3576
+Node: Makefile usage5110
+Node: Reports6028
+Node: Availability6303
 
 End Tag Table
