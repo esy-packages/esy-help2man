@@ -1,3 +1,11 @@
+Version 1.25		December 3, 2001
+
+ * New --source and --manual options to allow the page headers and
+   footers to be specified.
+
+ * New --help-option and --version-option options to cater for programs
+   which don't support the standard --help and --version.
+
 Version 1.24		December 22, 2000
 
  * Allow options to be specified in the initial block of include files.
