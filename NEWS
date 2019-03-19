@@ -1,3 +1,7 @@
+Version 1.30		July 9, 2003
+
+ * Support for localised manual pages has been added (--locale option).
+
 Version 1.29		September 7, 2002
 
  * Change info category to "GNU programming support".
