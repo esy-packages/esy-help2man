@@ -9,7 +9,7 @@ END-INFO-DIR-ENTRY
    This file documents the GNU `help2man' command which produces simple
 manual pages from the `--help' and `--version' output of other commands.
 
-   Copyright (C) 1999, 2000 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001 Free Software Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -75,8 +75,8 @@ How to Run `help2man'.
 
    `help2man' supports the following options:
 
-`--name STRING'
 `-n STRING'
+`--name=STRING'
      Use STRING as the description for the `NAME' paragraph of the
      manual page.
 
@@ -86,32 +86,56 @@ How to Run `help2man'.
      This option overrides an include file `[name]' section (*note
      Including text::.).
 
-`--section SECTION'
 `-s SECTION'
+`--section SECTION'
      Use SECTION as the section for the man page.  The default section
      is 1.
 
-`--include FILE'
+`-m MANUAL'
+`--manual=MANUAL'
+     Set the name of the manual section to SECTION, used as a centred
+     heading for the manual page.  By default `User Commands' is used
+     for pages in section 1, `Games' for section 6 and `System
+     Administration Utilities' for sections 8 and 1M.
+
+`-S SOURCE'
+`--source=SOURCE'
+     The program source is used as a page footer, and often contains
+     the name of the organisation or a suite of which the program is
+     part.  By default the value is the package name and version.
+
 `-i FILE'
+`--include=FILE'
      Include material from FILE (*note Including text::.).
 
-`--opt-include FILE'
 `-I FILE'
+`--opt-include=FILE'
      A variant of `--include' for use in Makefile pattern rules which
      does not require FILE to exist.
 
-`--output FILE'
 `-o FILE'
+`--output=FILE'
      Send output to FILE rather than `stdout'.
 
-`--no-info'
 `-N'
+`--no-info'
      Suppress inclusion of a `SEE ALSO' paragraph directing the reader
      to the Texinfo documentation.
 
 `--help'
 `--version'
      Show help or version information.
+
+   By default `help2man' passes the standard `--help' and `--version'
+options to the executable although alternatives may be specified using:
+
+`-h OPTION'
+`--help-option=OPTION'
+     help option string
+
+`-v OPTION'
+`--version-option=OPTION'
+     version option string
 
 
 File: help2man.info,  Node: Including text,  Next: Makefile usage,  Prev: Invoking help2man,  Up: Top
@@ -214,12 +238,12 @@ Obtaining `help2man'
 
 
 Tag Table:
-Node: Top1100
-Node: Overview1664
-Node: Invoking help2man2370
-Node: Including text3576
-Node: Makefile usage5110
-Node: Reports6028
-Node: Availability6303
+Node: Top1106
+Node: Overview1670
+Node: Invoking help2man2376
+Node: Including text4374
+Node: Makefile usage5908
+Node: Reports6826
+Node: Availability7101
 
 End Tag Table

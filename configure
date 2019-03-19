@@ -527,7 +527,7 @@ echo "configure:527: checking for perl" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_PERL'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
-  echo "configure:531: ...version 5.004 required" >&5
+  echo "configure:531: ...version 5.005 required" >&5
   # allow user to override
   if test -n "$PERL"; then
     ac_try="$PERL"
@@ -537,7 +537,7 @@ else
 
   for ac_prog in $ac_try; do
     echo "configure:540: trying $ac_prog" >&5
-    if ($ac_prog -e 'printf "found version %g\n",$];exit($]<5.004)') 1>&5 2>&1; then
+    if ($ac_prog -e 'printf "found version %g\n",$];exit($]<5.005)') 1>&5 2>&1; then
       ac_cv_prog_PERL=$ac_prog
       break
     fi
@@ -550,7 +550,7 @@ else
   echo "$ac_t""no" 1>&6
 fi
 
-test -z "$PERL" && { echo "configure: error: perl 5.004 required" 1>&2; exit 1; }
+test -z "$PERL" && { echo "configure: error: perl 5.005 required" 1>&2; exit 1; }
 ac_aux_dir=
 for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
   if test -f $ac_dir/install-sh; then
