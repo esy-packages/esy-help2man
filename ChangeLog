@@ -1,3 +1,16 @@
+Sat Sep  7 02:13:05 2002  Brendan O'Dea  <bod@debian.org>
+
+	* help2man.texi: Change @dircategory to "GNU programming support"
+	  (Karl Berry). Change @setchapternewpage to "on" (Peter Moulder).
+
+	* Makefile.in: Added some more GNU standard targets (Peter
+	  Moulder).
+
+	* Makefile.in, help2man.h2m: Rename help2man.aux to .h2m to avoid
+	  clashing with tex.
+
+	* help2man.PL: version bump
+
 Tue Jun  4 00:53:18 2002  Brendan O'Dea  <bod@odea.dropbear.id.au>
 
 	* help2man.PL: Expand copyright years (Paul Eggert).  Provide

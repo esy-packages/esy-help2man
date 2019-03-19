@@ -1,7 +1,7 @@
-This is help2man.info, produced by makeinfo version 4.1 from
+This is help2man.info, produced by makeinfo version 4.2 from
 help2man.texi.
 
-INFO-DIR-SECTION GNU admin
+INFO-DIR-SECTION GNU programming support
 START-INFO-DIR-ENTRY
 * help2man: (help2man).      Automatic manual page generation.
 END-INFO-DIR-ENTRY
@@ -314,13 +314,13 @@ Obtaining `help2man'
 
 
 Tag Table:
-Node: Top1086
-Node: Overview1719
-Node: Invoking help2man2425
-Node: --help recommendations4419
-Node: Including text7834
-Node: Makefile usage9375
-Node: Reports10301
-Node: Availability10576
+Node: Top1100
+Node: Overview1733
+Node: Invoking help2man2439
+Node: --help recommendations4433
+Node: Including text7848
+Node: Makefile usage9389
+Node: Reports10315
+Node: Availability10590
 
 End Tag Table

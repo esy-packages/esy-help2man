@@ -1,3 +1,11 @@
+Version 1.29		September 7, 2002
+
+ * Change info category to "GNU programming support".
+
+Version 1.28		June 4, 2002
+
+ * Add --info-page option.
+
 Version 1.27		March 19, 2002
 
  * Allow short and long options to be separated by multiple spaces
