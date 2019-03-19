@@ -6,10 +6,10 @@ START-INFO-DIR-ENTRY
 * help2man: (help2man).      Automatic manual page generation.
 END-INFO-DIR-ENTRY
 
-   This file documents the `help2man' command which produces simple
+   This file documents the GNU `help2man' command which produces simple
 manual pages from the `--help' and `--version' output of other commands.
 
-   Copyright (C) 1999 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000 Free Software Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -40,13 +40,14 @@ File: help2man.info,  Node: Top,  Next: Overview,  Up: (dir)
 * Invoking help2man::           How to run `help2man'.
 * Including text::              Including additional text in the output.
 * Makefile usage::              Using `help2man' with `make'.
-* Obtaining help2man::          How to obtain `help2man'.
+* Reports::                     Reporting bugs or suggestions.
+* Availability::                Obtaining `help2man'.
 
 
 File: help2man.info,  Node: Overview,  Next: Invoking help2man,  Prev: Top,  Up: Top
 
-Overview
-********
+Overview of `help2man'
+**********************
 
    `help2man' is a tool for automatically generating simple manual
 pages from program output.
@@ -65,8 +66,8 @@ something which resembles a manual page.
 
 File: help2man.info,  Node: Invoking help2man,  Next: Including text,  Prev: Overview,  Up: Top
 
-Invoking help2man
-*****************
+How to Run `help2man'.
+**********************
 
    The format for running the `help2man' program is:
 
@@ -115,8 +116,8 @@ Invoking help2man
 
 File: help2man.info,  Node: Including text,  Next: Makefile usage,  Prev: Invoking help2man,  Up: Top
 
-Including Text
-**************
+Including Additional Text in the Output
+***************************************
 
    Additional static text may be included in the generated manual page
 by using the `--include' and `--opt-include' options (*Note Invoking
@@ -162,10 +163,10 @@ the standard sections given above, or included at *other* (above) in
 the order they were encountered in the include file.
 
 
-File: help2man.info,  Node: Makefile usage,  Next: Obtaining help2man,  Prev: Including text,  Up: Top
+File: help2man.info,  Node: Makefile usage,  Next: Reports,  Prev: Including text,  Up: Top
 
-Makefile Usage
-**************
+Using `help2man' With `make'
+****************************
 
    A suggested use of `help2man' in Makefiles is to have the manual
 page depend not on the binary, but on the source file(s) in which the
@@ -191,25 +192,33 @@ included in the distribution without requiring the end-user to have
    for `autoconf' alone.
 
 
-File: help2man.info,  Node: Obtaining help2man,  Prev: Makefile usage,  Up: Top
+File: help2man.info,  Node: Reports,  Next: Availability,  Prev: Makefile usage,  Up: Top
 
-Obtaining help2man
-******************
+Reporting Bugs or Suggestions
+*****************************
 
-   The latest version of this distribution is available on-line from
-either:
+   If you find problems or have suggestions about this program or
+manual, please report them to <bug-help2man@gnu.org>.
+
+
+File: help2man.info,  Node: Availability,  Prev: Reports,  Up: Top
+
+Obtaining `help2man'
+********************
+
+   The latest version of this distribution is available on-line from:
 
      `ftp://ftp.gnu.org/gnu/help2man/'
-     `http://www.ozemail.com.au/~bod/help2man.tar.gz'
 
 
 
 Tag Table:
-Node: Top1090
-Node: Overview1595
-Node: Invoking help2man2273
-Node: Including text3467
-Node: Makefile usage4891
-Node: Obtaining help2man5792
+Node: Top1100
+Node: Overview1664
+Node: Invoking help2man2370
+Node: Including text3574
+Node: Makefile usage5048
+Node: Reports5966
+Node: Availability6241
 
 End Tag Table

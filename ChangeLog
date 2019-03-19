@@ -1,4 +1,16 @@
-Sun Apr 16 00:18:41 2000  Brendan O'Dea  <bod@diablo>
+Fri Jul  7 16:16:18 2000  Brendan O'Dea  <bod@compusol.com.au>
+
+	* README.sh: Add GNU prefix
+	* aclocal.m4: (add) autoconf support
+	* configure.in: Use AC_PROG_PERL from aclocal.m4 to find perl
+	  (checks for perl and perl5)
+
+	* help2man.PL: Add GNU prefix, bug reporting address
+	* help2man.aux: Remove ozemail URL
+	* help2man.texi: Add GNU prefix, bug reporting address. Remove
+	  ozemail URL
+
+Sun Apr 16 00:18:41 2000  Brendan O'Dea  <bod@compusol.com.au>
 
 	* Makefile.in: Add mkinstalldirs (as reqested by Dave Morrison,
 	  Patrick Tullmann and Mo DeJong)

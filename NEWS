@@ -1,3 +1,14 @@
+Version 1.022		July 7, 2000
+
+ * help2man is now officially a GNU program.  Add bug reporting
+   address and `GNU' prefix.
+
+ * configure now checks for `perl5' as well as `perl'.
+
+Version 1.021		April 16, 2000
+
+ * Create directories if required (Makefile).
+
 Version 1.020		December 30, 1999
 
  * Remove directory from command name(s) in synopsis.

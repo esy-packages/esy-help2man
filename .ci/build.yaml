@@ -15,5 +15,7 @@ jobs:
       displayName: 'Installing deps'
   - script: esy install
     displayName: 'Installing deps'
-  - script: esy x perl "#{self.bin / 'help2man'}" --version
-    displayName: 'Building and Dry run'
+  - script: esy build
+    displayName: 'Building'
+  - script: esy x which help2man
+    displayName: 'Dry run'
