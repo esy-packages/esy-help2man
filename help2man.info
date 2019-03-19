@@ -1,4 +1,4 @@
-This is help2man.info, produced by makeinfo version 4.2 from
+This is help2man.info, produced by makeinfo version 4.3 from
 help2man.texi.
 
 INFO-DIR-SECTION GNU programming support
@@ -9,7 +9,8 @@ END-INFO-DIR-ENTRY
    This file documents the GNU `help2man' command which produces simple
 manual pages from the `--help' and `--version' output of other commands.
 
-   Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation,
+Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -39,8 +40,9 @@ File: help2man.info,  Node: Top,  Next: Overview,  Up: (dir)
 * Overview::                    Overview of `help2man'.
 * Invoking help2man::           How to run `help2man'.
 * Including text::              Including additional text in the output.
-* --help recommendations::	Recommended formatting for --help output.
+* --help recommendations::      Recommended formatting for --help output.
 * Makefile usage::              Using `help2man' with `make'.
+* Localised man pages::         Producing native langauge manual pages.
 * Reports::                     Reporting bugs or suggestions.
 * Availability::                Obtaining `help2man'.
 
@@ -104,6 +106,12 @@ How to Run `help2man'
      The program source is used as a page footer, and often contains
      the name of the organisation or a suite of which the program is
      part.  By default the value is the package name and version.
+
+`-L LOCALE'
+`--locale=LOCALE'
+     Select output locale (default `C').  Both the program and
+     `help2man' must support the given LOCALE (*note Localised man
+     pages::).
 
 `-i FILE'
 `--include=FILE'
@@ -264,7 +272,7 @@ the standard sections given above, or included at _other_ (above) in
 the order they were encountered in the include file.
 
 
-File: help2man.info,  Node: Makefile usage,  Next: Reports,  Prev: --help recommendations,  Up: Top
+File: help2man.info,  Node: Makefile usage,  Next: Localised man pages,  Prev: --help recommendations,  Up: Top
 
 Using `help2man' With `make'
 ****************************
@@ -293,13 +301,67 @@ included in the distribution without requiring the end-user to have
    for `autoconf' alone.
 
 
-File: help2man.info,  Node: Reports,  Next: Availability,  Prev: Makefile usage,  Up: Top
+File: help2man.info,  Node: Localised man pages,  Next: Reports,  Prev: Makefile usage,  Up: Top
+
+Producing Native Langauge Manual Pages.
+***************************************
+
+   Manual pages may be produced for any locale supported by both the
+program and `help2man'(1) with the `--locale' (`-L') option.
+
+     help2man -L fr_FR@euro -o cp.fr.1 cp
+
+Changing the Location of Message Catalogs
+=========================================
+
+   When creating localised manual pages from a program's build
+directory it is probable that the translations installed in the
+standard location will not be (if installed at all) correct for the
+version of the program being built.
+
+   A preloadable library is provided with `help2man' which will
+intercept `open(2)' calls for message catalogs for the domain given by
+`$TEXTDOMAIN' and re-map the requests to the appropriate file under
+`./po' (or `$LOCALEDIR' if given).
+
+   So for example:
+
+     LD_PRELOAD="hacklocaledir.so preloadable_libintl.so" TEXTDOMAIN=PROG \
+       help2man -L fr_FR@euro -i PROG.fr.h2m -o PROG.fr.1 PROG
+
+   will translate requests by PROG for
+`/usr/share/locale/fr/LC_MESSGAES/PROG.mo' to `po/fr.gmo'.
+
+   Notes:
+   * The generalisation of `fr_FR@euro' to `fr' in the example above is
+     done by `gettext', if a more specific match were available it
+     would also have been re-mapped.
+
+   * The inclusion of `preloadable_libintl.so' in `$LD_PRELOAD' is
+     required only for cases (such as `glibc') where `gettext' is built
+     into libc (where `__open' would otherwise be satisfied internally).
+
+   * This preload hack has only been tested against `glibc' 2.3.1 and
+     `gettext' 2.3.1 on a GNU/Linux system; let me know if it does (or
+     doesn't) work for you (*note Reports::).
+
+   ---------- Footnotes ----------
+
+   (1) `help2man' currently supports `fr_FR' (*note Reports:: for how
+to submit other translations).
+
+
+File: help2man.info,  Node: Reports,  Next: Availability,  Prev: Localised man pages,  Up: Top
 
 Reporting Bugs or Suggestions
 *****************************
 
    If you find problems or have suggestions about this program or
 manual, please report them to <bug-help2man@gnu.org>.
+
+   Note to translators:  when submitting new translations for
+`po/help2man.pot' please additionally translate `help2man.h2m' (used to
+augment the manual pages for `help2man').
 
 
 File: help2man.info,  Node: Availability,  Prev: Reports,  Up: Top
@@ -314,13 +376,15 @@ Obtaining `help2man'
 
 
 Tag Table:
-Node: Top1100
-Node: Overview1733
-Node: Invoking help2man2439
-Node: --help recommendations4433
-Node: Including text7848
-Node: Makefile usage9389
-Node: Reports10315
-Node: Availability10590
+Node: Top1106
+Node: Overview1816
+Node: Invoking help2man2522
+Node: --help recommendations4692
+Node: Including text8107
+Node: Makefile usage9648
+Node: Localised man pages10586
+Ref: Localised man pages-Footnote-112380
+Node: Reports12482
+Node: Availability12939
 
 End Tag Table
