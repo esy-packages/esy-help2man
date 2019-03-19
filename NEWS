@@ -1,3 +1,12 @@
+Version 1.27		March 19, 2002
+
+ * Allow short and long options to be separated by multiple spaces
+   rather than a comma.
+
+Version 1.26		March 9, 2002
+
+ * Documentation updates giving suggested --help output.
+
 Version 1.25		December 3, 2001
 
  * New --source and --manual options to allow the page headers and
