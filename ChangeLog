@@ -1,3 +1,8 @@
+Tue Oct 31 17:07:30 2000  Brendan O'Dea  <bod@compusol.com.au>
+
+	* help2man.PL: Add protection for leading apostrophes (reported by
+	  Matt Kraai). Don't zero-pad version.
+
 Fri Jul  7 16:16:18 2000  Brendan O'Dea  <bod@compusol.com.au>
 
 	* README.sh: Add GNU prefix
